@@ -1,6 +1,6 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
@@ -13,7 +13,11 @@ public class WebDriverManagerConfig {
 
     static WebDriver driver;
 
-    @BeforeAll
+    @BeforeEach
+    void setUp() {
+        driver = setDriver("chrome");
+    }
+
     static WebDriver setDriver(String browser) {
         WebDriverManager.chromedriver().setup();
 
